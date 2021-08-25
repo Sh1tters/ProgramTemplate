@@ -137,10 +137,10 @@ public class SignUpPanel extends JPanel implements ActionListener {
         //Coding Part of showPassword JCheckBox
         if (e.getSource() == showPassword) {
             if (showPassword.isSelected()) {
-                // replace all * with real characters
+                // replace all * with real characters.
                 passwordField.setEchoChar((char) 0);
             } else {
-                // replace all characters with *
+                // replace all characters with *.
                 passwordField.setEchoChar('*');
             }
 
