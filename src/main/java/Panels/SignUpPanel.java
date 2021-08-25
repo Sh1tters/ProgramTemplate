@@ -108,10 +108,23 @@ public class SignUpPanel extends JPanel implements ActionListener {
                         /** Check if username is already in use */
                         boolean UsernameSuccess = mongo.ValidationSignUp(username);
                         if (UsernameSuccess) {
-                            // TODO Encrypt the password before initializing inside sign new user
-
+                            /**SHA is the Secure Hash Algorithm. It uses a cryptographic function that takes up the 32-bit
+                             * plain-text password and converts it into a fixed size 256-bit hash value.
+                             * This hashing technique is implemented using the MessageDiagest class of
+                             * java.security package.
+                             * It is a one-way encryption technique. Once the passphrase is encrypted it cannot be decrypted back.
+                             *
+                             * https://www.javatpoint.com/how-to-encrypt-password-in-java
+                             * */
+                            password = Handler.toHexString(handler.PasswordEncryption(password));
                             /** Create new user */
                             mongo.SignNewUser(username, password);
+
+                            /** Success */
+                            JOptionPane.showMessageDialog(this, "Successfully created your account (" + username + ")");
+                            /** Go to Panels.LoginPanel */
+                            CardLayout cardLayout = (CardLayout) contentPane.getLayout();
+                            cardLayout.show(contentPane, "LoginPanel");
 
                             /** Load new screen*/
                             //TODO Either load login screen and auto complete the username field or load directly into the dashboard page
@@ -129,7 +142,7 @@ public class SignUpPanel extends JPanel implements ActionListener {
 
         //Coding Part of BACK button
         if (e.getSource() == backButton) {
-            /** Go to Panels.SignUpPanel */
+            /** Go to Panels.LoginPanel */
             CardLayout cardLayout = (CardLayout) contentPane.getLayout();
             cardLayout.show(contentPane, "LoginPanel");
         }
