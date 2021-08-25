@@ -34,6 +34,7 @@ public class Central {
         signupPanel = new SignUpPanel(contentPane, this);
         dashboardPanel = new DashboardPanel(contentPane, this);
 
+
         contentPane.add(loginPanel, "LoginPanel");
         contentPane.add(signupPanel, "SignUpPanel");
         contentPane.add(dashboardPanel, "DashboardPanel");

@@ -25,6 +25,7 @@ public class LoginPanel extends JPanel implements ActionListener {
 
 
     public LoginPanel(JPanel panel, Central cle) {
+        /** Get background */
         contentPane = panel;
         setOpaque(true);
         setBackground(Color.lightGray);
@@ -33,6 +34,7 @@ public class LoginPanel extends JPanel implements ActionListener {
         addComponentsToContainer();
         addActionEvent();
     }
+
 
     public void setLayoutManager() {
         setLayout(null);

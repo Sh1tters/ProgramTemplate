@@ -39,7 +39,7 @@ public class DashboardPanel extends JPanel implements ActionListener {
 
     @Override
     public Dimension getPreferredSize() {
-        return (new Dimension(1280, 768));
+        return (new Dimension(500, 500));
     }
 
     @Override
