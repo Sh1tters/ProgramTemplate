@@ -89,7 +89,10 @@ public class LoginPanel extends JPanel implements ActionListener {
                     if (success) {
                         /** Login user */
                         JOptionPane.showMessageDialog(this, "Login Successful");
-                        handler.Login(username);
+                        //handler.Login();
+                        /** Go to Panels.DashboardPanel */
+                        CardLayout cardLayout = (CardLayout) contentPane.getLayout();
+                        cardLayout.show(contentPane, "DashboardPanel");
                     } else {
                         /** Invalid credentials */
                         /** Errors made from ValidationSignUp */

@@ -7,11 +7,13 @@ import java.security.NoSuchAlgorithmException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+
 public class Handler {
 
-    public void Login(String username) {
+    public void Login() {
         //TODO go to dashboard with username. We will only transfer the username because our dashboard panel only depends on username.
     }
+
 
     public Boolean IsPasswordGood(String password) {
         Pattern p = Pattern.compile("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$", Pattern.CASE_INSENSITIVE);

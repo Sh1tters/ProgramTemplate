@@ -113,8 +113,6 @@ public class SignUpPanel extends JPanel implements ActionListener {
                              * This hashing technique is implemented using the MessageDiagest class of
                              * java.security package.
                              * It is a one-way encryption technique. Once the passphrase is encrypted it cannot be decrypted back.
-                             *
-                             * https://www.javatpoint.com/how-to-encrypt-password-in-java
                              * */
                             password = Handler.toHexString(handler.PasswordEncryption(password));
                             /** Create new user */
@@ -122,13 +120,12 @@ public class SignUpPanel extends JPanel implements ActionListener {
 
                             /** Success */
                             JOptionPane.showMessageDialog(this, "Successfully created your account (" + username + ")");
-                            /** Go to Panels.LoginPanel */
-                            CardLayout cardLayout = (CardLayout) contentPane.getLayout();
-                            cardLayout.show(contentPane, "LoginPanel");
 
-                            /** Load new screen*/
+                            /** Load new screen on response */
                             //TODO Either load login screen and auto complete the username field or load directly into the dashboard page
                             //TODO Both ways are fine, but which one should we choice?
+                            CardLayout cardLayout = (CardLayout) contentPane.getLayout();
+                            cardLayout.show(contentPane, "LoginPanel");
                         } else {
                             /** name already taken */
                             JOptionPane.showMessageDialog(this, "Name is already in use!");
