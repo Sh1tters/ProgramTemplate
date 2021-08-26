@@ -11,9 +11,7 @@ import java.awt.event.ActionListener;
 public class DashboardPanel extends JPanel implements ActionListener {
 
     private JPanel contentPane;
-    userLabel =new
-
-    JTextArea("");
+    JLabel userLabel = new JLabel("null");
 
 
     public DashboardPanel(JPanel panel, DashboardCentral cle, String username) {
@@ -44,9 +42,8 @@ public class DashboardPanel extends JPanel implements ActionListener {
     }
 
     public void addActionEvent() {
-        userLabel.addActionListener(this);
-    }
 
+    }
 
     @Override
     public Dimension getPreferredSize() {
@@ -55,9 +52,7 @@ public class DashboardPanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == userLabel) {
-            System.out.println("test");
-        }
+
     }
 
 
