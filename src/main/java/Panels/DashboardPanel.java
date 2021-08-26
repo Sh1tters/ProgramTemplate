@@ -15,7 +15,6 @@ public class DashboardPanel extends JPanel implements ActionListener {
 
 
     public DashboardPanel(JPanel panel, DashboardCentral cle, String username) {
-        System.out.println(username);
         userLabel.setText(username);
 
         contentPane = panel;
