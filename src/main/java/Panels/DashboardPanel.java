@@ -12,14 +12,18 @@ public class DashboardPanel extends JPanel implements ActionListener {
 
     private JPanel contentPane;
     JLabel userLabel = new JLabel("null");
+    private int x = 830;
+    private int y = 22;
 
 
     public DashboardPanel(JPanel panel, DashboardCentral cle, String username) {
+        setBorder(BorderFactory.createMatteBorder(60, 0, 0, 0, Color.GRAY)); // create top border
         userLabel.setText(username);
-
+        if (username.length() <= 7) x = 840;
+        if (username.length() >= 6) x = 830;
         contentPane = panel;
         setOpaque(true);
-        setBackground(Color.lightGray);
+        setBackground(Color.GRAY.brighter());
         setLayoutManager();
         setLocationAndSize();
         addComponentsToContainer();
@@ -32,8 +36,8 @@ public class DashboardPanel extends JPanel implements ActionListener {
     }
 
     public void setLocationAndSize() {
-        userLabel.setBounds(830, 20, 100, 15);
-        userLabel.setFont(new Font("Verdana", Font.PLAIN, 18));
+        userLabel.setBounds(x, y, 100, 15);
+        userLabel.setFont(new Font("Helvetica", Font.PLAIN, 18));
     }
 
     public void addComponentsToContainer() {
