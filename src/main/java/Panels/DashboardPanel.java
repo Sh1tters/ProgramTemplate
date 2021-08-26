@@ -13,23 +13,29 @@ import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
 
-
 public class DashboardPanel extends JPanel implements ActionListener {
 
     private JPanel contentPane;
     JLabel userLabel = new JLabel("null");
     JLabel avatar = new JLabel();
-    private int x = 830;
+    JButton button = new JButton("test");
+    private int x = 1060;
     private int y = 22;
     Image image = null;
     private int widthImage = 38;
     private int heightImage = 38;
-    private int xImage = 920;
-    private int yImage = 10;
+    private int xImage = 1140;
+    private int yImage = 11;
 
 
     public DashboardPanel(JPanel panel, DashboardCentral cle, String username) {
         setBorder(BorderFactory.createMatteBorder(60, 0, 0, 0, Color.GRAY)); // create top border
+
+
+        /** Add shadow effect under border */
+        //TODO Use DropShadowBorder
+
+
         /** Set username field to current online user */
         userLabel.setText(username);
 
@@ -47,10 +53,10 @@ public class DashboardPanel extends JPanel implements ActionListener {
 
         //TODO make a better algorithm that adds on x value so username will not get caught inside the avatar
         // maybe have a for loop and for every length - 20 of x so username cannot get caught
-        if (username.length() <= 7) x = 840;
-        if (username.length() >= 6) x = 830;
-        contentPane = panel;
-        setOpaque(true);
+        if (username.length() <= 7) x = 1060;
+        if (username.length() >= 6) x = 1060;
+
+        setOpaque(false);
         setBackground(Color.GRAY.brighter());
         setLayoutManager();
         setLocationAndSize();
@@ -58,16 +64,10 @@ public class DashboardPanel extends JPanel implements ActionListener {
         addActionEvent();
 
 
-        /** Avatar click listener */
-        avatar.addMouseListener(new MouseAdapter() {
-
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                /** Make dropdown menu appear */
-            }
-        });
+        /** Mouse event listener for avatar */
+        AvatarListener avatarListener = new AvatarListener();
+        avatar.addMouseListener(avatarListener);
     }
-
 
     public void setLayoutManager() {
         setLayout(null);
@@ -94,7 +94,7 @@ public class DashboardPanel extends JPanel implements ActionListener {
 
     @Override
     public Dimension getPreferredSize() {
-        return (new Dimension(1000, 700));
+        return (new Dimension(1200, 800));
     }
 
     @Override
@@ -103,6 +103,12 @@ public class DashboardPanel extends JPanel implements ActionListener {
     }
 
 
+}
 
+class AvatarListener extends MouseAdapter {
 
+    public void mousePressed(MouseEvent e) {
+        //TODO Show dropdown of buttons
+        System.out.println("lol");
+    }
 }

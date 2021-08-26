@@ -30,6 +30,7 @@ public class DashboardCentral {
         contentPane.add(dashboardPanel, "DashboardPanel");
 
         frame.getContentPane().add(contentPane, BorderLayout.CENTER);
+        frame.setResizable(false);
         frame.pack();
         frame.setLocationByPlatform(true);
         frame.setVisible(true);
