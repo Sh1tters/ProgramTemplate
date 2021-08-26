@@ -1,6 +1,6 @@
 package Panels;
 
-import Central.Central;
+import Central.DashboardCentral;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,9 +11,15 @@ import java.awt.event.ActionListener;
 public class DashboardPanel extends JPanel implements ActionListener {
 
     private JPanel contentPane;
+    userLabel =new
+
+    JTextArea("");
 
 
-    public DashboardPanel(JPanel panel, Central cle) {
+    public DashboardPanel(JPanel panel, DashboardCentral cle, String username) {
+        System.out.println(username);
+        userLabel.setText(username);
+
         contentPane = panel;
         setOpaque(true);
         setBackground(Color.lightGray);
@@ -23,27 +29,38 @@ public class DashboardPanel extends JPanel implements ActionListener {
         addActionEvent();
     }
 
+
     public void setLayoutManager() {
         setLayout(null);
     }
 
     public void setLocationAndSize() {
+        userLabel.setBounds(830, 20, 100, 15);
+        userLabel.setFont(new Font("Verdana", Font.PLAIN, 18));
     }
 
     public void addComponentsToContainer() {
+        add(userLabel);
     }
 
     public void addActionEvent() {
+        userLabel.addActionListener(this);
     }
 
 
     @Override
     public Dimension getPreferredSize() {
-        return (new Dimension(500, 500));
+        return (new Dimension(1000, 700));
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        if (e.getSource() == userLabel) {
+            System.out.println("test");
+        }
     }
+
+
+
+
 }

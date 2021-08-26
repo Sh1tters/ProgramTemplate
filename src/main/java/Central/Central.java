@@ -1,6 +1,5 @@
 package Central;
 
-import Panels.DashboardPanel;
 import Panels.LoginPanel;
 import Panels.SignUpPanel;
 
@@ -11,7 +10,6 @@ import java.awt.*;
 public class Central {
     private LoginPanel loginPanel;
     private SignUpPanel signupPanel;
-    private DashboardPanel dashboardPanel;
 
     public static void main(String... args) {
         SwingUtilities.invokeLater(new Runnable() {
@@ -32,12 +30,10 @@ public class Central {
 
         loginPanel = new LoginPanel(contentPane, this);
         signupPanel = new SignUpPanel(contentPane, this);
-        dashboardPanel = new DashboardPanel(contentPane, this);
 
 
         contentPane.add(loginPanel, "LoginPanel");
         contentPane.add(signupPanel, "SignUpPanel");
-        contentPane.add(dashboardPanel, "DashboardPanel");
 
         frame.getContentPane().add(contentPane, BorderLayout.CENTER);
         frame.pack();

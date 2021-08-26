@@ -1,6 +1,7 @@
 package Panels;
 
 import Central.Central;
+import Central.DashboardCentral;
 import Handlers.Handler;
 import Handlers.MongoDB;
 
@@ -93,8 +94,11 @@ public class LoginPanel extends JPanel implements ActionListener {
                         JOptionPane.showMessageDialog(this, "Login Successful");
                         //handler.Login();
                         /** Go to Panels.DashboardPanel */
-                        CardLayout cardLayout = (CardLayout) contentPane.getLayout();
-                        cardLayout.show(contentPane, "DashboardPanel");
+                        DashboardCentral.main(username);
+
+                        JFrame parent = (JFrame) this.getTopLevelAncestor();
+                        parent.dispose();
+
                     } else {
                         /** Invalid credentials */
                         /** Errors made from ValidationSignUp */
