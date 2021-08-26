@@ -17,10 +17,10 @@ import static com.mongodb.client.model.Filters.eq;
 
 
 public class MongoDB {
-    ConnectionString connectionString = new ConnectionString("mongodb+srv://User:User@cluster0.yjmz2.mongodb.net/Program?retryWrites=true&w=majority");
-    MongoClient mongoClient = MongoClients.create(connectionString);
-    MongoDatabase database = mongoClient.getDatabase("Program");
-    MongoCollection collection = database.getCollection("User");
+    public static ConnectionString connectionString = new ConnectionString("mongodb+srv://User:User@cluster0.yjmz2.mongodb.net/Program?retryWrites=true&w=majority");
+    public static MongoClient mongoClient = MongoClients.create(connectionString);
+    public static MongoDatabase database = mongoClient.getDatabase("Program");
+    public static MongoCollection collection = database.getCollection("User");
 
     Handler handler = new Handler();
 
@@ -36,6 +36,21 @@ public class MongoDB {
     public String GetPassword(String username) {
         String password = "null";
         return GetPassword(password);
+    }
+
+    public static String getProfileAvatar(String username) {
+        String ProfileAvatar = "";
+        Object rawData = collection.find(eq("name", username)).first();//finds username and returns null if nothing found.
+
+        /** Convert java object to json object */
+        String jsonInString = new Gson().toJson(rawData);
+
+        JSONObject jsonData = new JSONObject(jsonInString);
+
+        /** Get value from key */
+        ProfileAvatar = jsonData.getString("profileAvatar");
+
+        return ProfileAvatar;
     }
 
     public boolean ValidationLogin(String username, String password) throws Exception {
@@ -80,15 +95,13 @@ public class MongoDB {
         /** Get current date and time */
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
-        System.out.println(now);
-        System.out.println(dtf);
 
         Document doc = new Document();
         doc.append("name", username);
         doc.append("password", password);
         doc.append("joined", now);
         doc.append("email", null);
-        doc.append("profileAvater", "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.petwellnessaz.com%2Fmeet-our-team%2Fattachment%2Fblank-profile-picture-973460_640-300x300%2F&psig=AOvVaw3iT5uSry3wGxhhccEp700Q&ust=1630004759268000&source=images&cd=vfe&ved=0CAoQjRxqFwoTCIiUhofvzPICFQAAAAAdAAAAABAD");
+        doc.append("profileAvatar", "https://image.pngaaa.com/909/2676909-middle.png");
         /** display url image: https://stackoverflow.com/questions/13448368/trying-to-display-url-image-in-jframe */
         collection.insertOne(doc);
     }
