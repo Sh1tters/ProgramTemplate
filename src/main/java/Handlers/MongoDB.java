@@ -17,10 +17,10 @@ import static com.mongodb.client.model.Filters.eq;
 
 
 public class MongoDB {
-    public static ConnectionString connectionString = new ConnectionString("mongodb+srv://User:User@cluster0.yjmz2.mongodb.net/Program?retryWrites=true&w=majority");
+    public static ConnectionString connectionString = new ConnectionString("CONNECTION URL STRING HERE");
     public static MongoClient mongoClient = MongoClients.create(connectionString);
-    public static MongoDatabase database = mongoClient.getDatabase("Program");
-    public static MongoCollection collection = database.getCollection("User");
+    public static MongoDatabase database = mongoClient.getDatabase("DATABASE NAME HERE");
+    public static MongoCollection collection = database.getCollection("COLLECTION NAME HERE");
 
     Handler handler = new Handler();
 
@@ -31,11 +31,6 @@ public class MongoDB {
     public String GetName(String username) {
 
         return GetName(username);
-    }
-
-    public String GetPassword(String username) {
-        String password = "null";
-        return GetPassword(password);
     }
 
     public static String getProfileAvatar(String username) {
@@ -90,8 +85,6 @@ public class MongoDB {
     }
 
     public void SignNewUser(String username, String password) throws Exception {
-        //TODO structure the document with tree structure somehow, dont use document, its shit
-        // for now we keep the same shit way
         /** Get current date and time */
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
@@ -101,7 +94,7 @@ public class MongoDB {
         doc.append("password", password);
         doc.append("joined", now);
         doc.append("email", null);
-        doc.append("profileAvatar", "https://image.pngaaa.com/909/2676909-middle.png");
+        doc.append("profileAvatar", "https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg");
         /** display url image: https://stackoverflow.com/questions/13448368/trying-to-display-url-image-in-jframe */
         collection.insertOne(doc);
     }

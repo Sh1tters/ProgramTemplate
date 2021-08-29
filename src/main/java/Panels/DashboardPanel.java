@@ -31,10 +31,9 @@ public class DashboardPanel extends JPanel implements ActionListener {
     public DashboardPanel(JPanel panel, DashboardCentral cle, String username) {
         setBorder(BorderFactory.createMatteBorder(60, 0, 0, 0, Color.GRAY)); // create top border
 
-
-        /** Add shadow effect under border */
-        //TODO Use DropShadowBorder
-
+        for (int i = 0; i < username.length(); i++) {
+            x = x - 1;
+        }
 
         /** Set username field to current online user */
         userLabel.setText(username);
@@ -50,11 +49,6 @@ public class DashboardPanel extends JPanel implements ActionListener {
         Image ScaledImage = image.getScaledInstance(widthImage, heightImage, Image.SCALE_SMOOTH);
         avatar = new JLabel(new ImageIcon(ScaledImage));
 
-
-        //TODO make a better algorithm that adds on x value so username will not get caught inside the avatar
-        // maybe have a for loop and for every length - 20 of x so username cannot get caught
-        if (username.length() <= 7) x = 1060;
-        if (username.length() >= 6) x = 1060;
 
         setOpaque(false);
         setBackground(Color.GRAY.brighter());
@@ -108,7 +102,6 @@ public class DashboardPanel extends JPanel implements ActionListener {
 class AvatarListener extends MouseAdapter {
 
     public void mousePressed(MouseEvent e) {
-        //TODO Show dropdown of buttons
-        System.out.println("lol");
+        // Do whatever you want when image is clicked
     }
 }

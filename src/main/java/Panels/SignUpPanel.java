@@ -85,9 +85,6 @@ public class SignUpPanel extends JPanel implements ActionListener {
             /** Check if any field has not being filled out */
             if (Objects.equals(username, "") || Objects.equals(password, "") || Objects.equals(vpwdText, "")) {
                 JOptionPane.showMessageDialog(this, "Missing required field(s)");
-                // make a red circle behind the missing fields
-                // code goes here - either have 4 different if statements or then we check a smarter way
-                // TODO maybe add a error marker on the field that is incorrect
 
             } else if (!Objects.equals(password, vpwdText)) {
                 JOptionPane.showMessageDialog(this, "Password did not match!");
@@ -122,8 +119,6 @@ public class SignUpPanel extends JPanel implements ActionListener {
                             JOptionPane.showMessageDialog(this, "Successfully created your account (" + username + ")");
 
                             /** Load new screen on response */
-                            //TODO Either load login screen and auto complete the username field or load directly into the dashboard page
-                            //TODO Both ways are fine, but which one should we choice?
                             CardLayout cardLayout = (CardLayout) contentPane.getLayout();
                             cardLayout.show(contentPane, "LoginPanel");
                         } else {

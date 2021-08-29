@@ -83,9 +83,6 @@ public class LoginPanel extends JPanel implements ActionListener {
 
             if (Objects.equals(username, "") || Objects.equals(password, "")) {
                 JOptionPane.showMessageDialog(this, "Missing required field(s)");
-                // make a red circle behind the missing fields
-                // code goes here - either have 4 different if statements or then we check a smarter way
-                // TODO add a error marker on the field that is incorrect
             } else {
                 try {
                     boolean success = mongo.ValidationLogin(username, password);
